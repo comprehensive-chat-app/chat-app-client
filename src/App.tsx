@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {MessageList} from "./message/MessageList";
+import {AddNewMessage} from "./message/AddNewMessage";
 
 function App() {
+
+  const handleSubmit = (text: string) => {
+    console.log(text);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MessageList />
+      <AddNewMessage onSubmit={handleSubmit} />
     </div>
   );
 }
