@@ -1,24 +1,27 @@
 import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react';
 import axios from 'axios';
+import { Textarea } from '@chakra-ui/react';
 
 export const AddNewMessage = () => {
   const [text, setText] = useState('');
 
-  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = async (e) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = async (
+    e,
+  ) => {
     if (e.key === 'Enter') {
       await axios.post('http://localhost:3000/message/add', { text });
       setText('');
     }
   };
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setText(e.target.value);
   };
 
   return (
-    <input
-      type="text"
+    <Textarea
       value={text}
+      placeholder="Write a message..."
       onKeyDown={handleKeyDown}
       onChange={handleChange}
     />

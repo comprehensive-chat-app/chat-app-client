@@ -1,19 +1,17 @@
 import React from 'react';
 import './App.css';
-import {MessageList} from "./message/MessageList";
-import {AddNewMessage} from "./message/AddNewMessage";
+import { MessageList } from './message/MessageList';
+import { AddNewMessage } from './message/AddNewMessage';
+import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
-
-  const handleSubmit = (text: string) => {
-    console.log(text);
-  };
-
   return (
-    <div>
-      <MessageList />
-      <AddNewMessage onSubmit={handleSubmit} />
-    </div>
+    <ChakraProvider>
+      <div>
+        <MessageList />
+        <AddNewMessage />
+      </div>
+    </ChakraProvider>
   );
 }
 
