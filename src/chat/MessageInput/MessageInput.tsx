@@ -2,12 +2,13 @@ import { ChangeEventHandler, KeyboardEventHandler, useState } from 'react';
 import axios from 'axios';
 import { Button, Input, InputGroup, InputRightAddon } from '@chakra-ui/react';
 import * as Styled from './Styles';
+import { getApiUrl } from '../../api';
 
 export const MessageInput = () => {
   const [text, setText] = useState('');
 
   const executeSendMessage = async () => {
-    await axios.post('http://localhost:3000/message/add', { text });
+    await axios.post(getApiUrl('message/add'), { text });
     setText('');
   };
 

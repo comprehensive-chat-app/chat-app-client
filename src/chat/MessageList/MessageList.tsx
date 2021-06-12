@@ -3,9 +3,10 @@ import axios from 'axios';
 import { TMessage } from '../types';
 import { MessageItem } from './MessageItem';
 import { StackDivider, VStack } from '@chakra-ui/react';
+import { getApiUrl } from '../../api';
 
 const fetch = async () => {
-  const response = await axios('http://localhost:3000/message/list?skip=0');
+  const response = await axios(getApiUrl('message/list?skip=0'));
   return response.data;
 };
 
